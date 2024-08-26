@@ -129,6 +129,63 @@
         .confirmation, .cart-summary, .order-summary {
             display: none;
         }
+
+        /* New CSS for Order Summary */
+        .order-summary {
+            display: none; /* Awalnya tersembunyi */
+            max-width: 400px;
+            margin: 0 auto; /* Agar berada di tengah */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-summary h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .order-summary label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .order-summary input,
+        .order-summary select,
+        .order-summary textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .order-summary textarea {
+            resize: none; /* Menghindari perubahan ukuran */
+        }
+
+        .order-summary .order-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .order-summary .order-btn:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -202,7 +259,201 @@
             </div>
             <a href="#" class="order-btn" onclick="addToCart('Toner Anti Acne', 120000, 'quantity5')">Tambah ke Keranjang</a>
         </div>
-    </section>
+
+        <!-- Product 6 -->
+        <div class="product" id="product6">
+            <h3>Peeling Gel Eksfoliasi</h3>
+            <img src="product6.jpg" alt="Produk 6">
+            <p>Harga: Rp180.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity6', -1)">-</button>
+                <input type="number" id="quantity6" min="1" value="1">
+                <button onclick="updateQuantity('quantity6', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Peeling Gel Eksfoliasi', 180000, 'quantity6')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product" id="product7">
+            <h3>Face Mask Clay</h3>
+            <img src="product7.jpg" alt="Produk 7">
+            <p>Harga: Rp140.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity7', -1)">-</button>
+                <input type="number" id="quantity7" min="1" value="1">
+                <button onclick="updateQuantity('quantity7', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Face Mask Clay', 140000, 'quantity7')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product" id="product8">
+            <h3>Eye Cream Anti-Wrinkle</h3>
+            <img src="product8.jpg" alt="Produk 8">
+            <p>Harga: Rp210.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity8', -1)">-</button>
+                <input type="number" id="quantity8" min="1" value="1">
+                <button onclick="updateQuantity('quantity8', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Eye Cream Anti-Wrinkle', 210000, 'quantity8')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product" id="product9">
+            <h3>Lip Balm Moisturizing</h3>
+            <img src="product9.jpg" alt="Produk 9">
+            <p>Harga: Rp90.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity9', -1)">-</button>
+                <input type="number" id="quantity9" min="1" value="1">
+                <button onclick="updateQuantity('quantity9', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Lip Balm Moisturizing', 90000, 'quantity9')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product" id="product10">
+            <h3>Night Cream Repairing</h3>
+            <img src="product10.jpg" alt="Produk 10">
+            <p>Harga: Rp230.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity10', -1)">-</button>
+                <input type="number" id="quantity10" min="1" value="1">
+                <button onclick="updateQuantity('quantity10', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Night Cream Repairing', 230000, 'quantity10')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product" id="product11">
+            <h3>Body Lotion Whitening</h3>
+            <img src="product11.jpg" alt="Produk 11">
+            <p>Harga: Rp160.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity11', -1)">-</button>
+                <input type="number" id="quantity11" min="1" value="1">
+                <button onclick="updateQuantity('quantity11', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Body Lotion Whitening', 160000, 'quantity11')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product" id="product12">
+            <h3>Hair Serum Revitalizing</h3>
+            <img src="product12.jpg" alt="Produk 12">
+            <p>Harga: Rp190.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity12', -1)">-</button>
+                <input type="number" id="quantity12" min="1" value="1">
+                <button onclick="updateQuantity('quantity12', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Hair Serum Revitalizing', 190000, 'quantity12')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product" id="product13">
+            <h3>Scrub Tubuh Exfoliating</h3>
+            <img src="product13.jpg" alt="Produk 13">
+            <p>Harga: Rp130.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity13', -1)">-</button>
+                <input type="number" id="quantity13" min="1" value="1">
+                <button onclick="updateQuantity('quantity13', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Scrub Tubuh Exfoliating', 130000, 'quantity13')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product" id="product14">
+            <h3>Essence Anti-Aging</h3>
+            <img src="product14.jpg" alt="Produk 14">
+            <p>Harga: Rp270.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity14', -1)">-</button>
+                <input type="number" id="quantity14" min="1" value="1">
+                <button onclick="updateQuantity('quantity14', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Essence Anti-Aging', 270000, 'quantity14')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 15 -->
+        <div class="product" id="product15">
+            <h3>Cleanser Foam Gentle</h3>
+            <img src="product15.jpg" alt="Produk 15">
+            <p>Harga: Rp110.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity15', -1)">-</button>
+                <input type="number" id="quantity15" min="1" value="1">
+                <button onclick="updateQuantity('quantity15', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Cleanser Foam Gentle', 110000, 'quantity15')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 16 -->
+        <div class="product" id="product16">
+            <h3>Face Mist Refreshing</h3>
+            <img src="product16.jpg" alt="Produk 16">
+            <p>Harga: Rp125.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity16', -1)">-</button>
+                <input type="number" id="quantity16" min="1" value="1">
+                <button onclick="updateQuantity('quantity16', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Face Mist Refreshing', 125000, 'quantity16')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 17 -->
+        <div class="product" id="product17">
+            <h3>Serum Vitamin C</h3>
+            <img src="product17.jpg" alt="Produk 17">
+            <p>Harga: Rp220.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity17', -1)">-</button>
+                <input type="number" id="quantity17" min="1" value="1">
+                <button onclick="updateQuantity('quantity17', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Serum Vitamin C', 220000, 'quantity17')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 18 -->
+        <div class="product" id="product18">
+            <h3>Brightening Essence</h3>
+            <img src="product18.jpg" alt="Produk 18">
+            <p>Harga: Rp240.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity18', -1)">-</button>
+                <input type="number" id="quantity18" min="1" value="1">
+                <button onclick="updateQuantity('quantity18', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Brightening Essence', 240000, 'quantity18')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 19 -->
+        <div class="product" id="product19">
+            <h3>Facial Oil Nourishing</h3>
+            <img src="product19.jpg" alt="Produk 19">
+            <p>Harga: Rp150.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity19', -1)">-</button>
+                <input type="number" id="quantity19" min="1" value="1">
+                <button onclick="updateQuantity('quantity19', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Facial Oil Nourishing', 150000, 'quantity19')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 20 -->
+        <div class="product" id="product20">
+            <h3>Body Butter Moisturizing</h3>
+            <img src="product20.jpg" alt="Produk 20">
+            <p>Harga: Rp200.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity20', -1)">-</button>
+                <input type="number" id="quantity20" min="1" value="1">
+                <button onclick="updateQuantity('quantity20', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Body Butter Moisturizing', 200000, 'quantity20')">Tambah ke Keranjang</a>
+        </div>
 
     <section class="cart-summary" id="cart-summary-section">
         <h3>Keranjang Belanja</h3>
@@ -215,18 +466,15 @@
             <h3>Konfirmasi Pesanan</h3>
             <label for="name">Nama Anda:</label>
             <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">
-            <br>
             <label for="delivery-method">Metode Pengambilan:</label>
             <select id="delivery-method" onchange="toggleAddressField()">
                 <option value="diambil ke toko">Ambil di Toko</option>
                 <option value="diantar">Diantar</option>
             </select>
-            <br>
             <div id="address-field" style="display: none;">
                 <label for="address">Alamat Pengiriman:</label>
                 <textarea id="address" name="address" rows="3" placeholder="Masukkan alamat lengkap Anda"></textarea>
             </div>
-            <br>
             <a href="#" class="order-btn" onclick="confirmOrder()">Konfirmasi Pesanan</a>
         </div>
     </section>
