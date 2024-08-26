@@ -1,118 +1,328 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TES</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Toko Skincare Cantik</title>
     <style>
-        @keyframes slide-in-left {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+        header {
+            background-color: #ff6f61;
+            color: white;
+            padding: 30px;
+            text-align: center;
         }
-        @keyframes bounce-in {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1);
-            }
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-family: 'Lobster', cursive;
         }
-        .slide-in-left {
-            animation: slide-in-left 1s ease-out;
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
         }
-        .fade-in {
-            animation: fade-in 2s ease-out;
+        section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
         }
-        .bounce-in {
-            animation: bounce-in 1s ease-out;
+        .product {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 260px;
+            transition: transform 0.3s;
         }
-        .custom-file-input {
-            display: none;
+        .product:hover {
+            transform: translateY(-10px);
         }
-        .editable {
+        .product img {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .product h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+        .order-btn {
+            display: block;
+            padding: 12px 20px;
+            background-color: #ff6f61;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        .order-btn:hover {
+            background-color: #ff4a3d;
+        }
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        .quantity-controls button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 8px 12px;
             cursor: pointer;
+            border-radius: 50%;
+            font-size: 1em;
+            transition: background-color 0.3s;
         }
-        .editable:focus {
-            outline: none;
+        .quantity-controls button:hover {
+            background-color: #ff4a3d;
         }
-        .editable-input {
+        .quantity-controls input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+            font-size: 1em;
+        }
+        .cart-summary {
+            margin: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cart-item button:hover {
+            background-color: #ff4a3d;
+        }
+        .confirmation, .cart-summary, .order-summary {
             display: none;
-        }
-        .relative {
-            position: relative;
         }
     </style>
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="container mx-auto">
-        <h1 id="title" class="text-3xl font-bold mb-4 text-center slide-in-left editable">RYUJIN</h1>
-        <input type="text" id="titleInput" class="editable-input border p-2 rounded w-full mb-4" style="display:none;">
+<body>
+    <header>
+        <h1>Toko Skincare Cantik</h1>
+        <p>Perawatan kulitmu dengan produk terbaik</p>
+    </header>
 
-        <div class="flex flex-col md:flex-row items-center md:justify-between mb-6">
-            <div class="mb-4 md:mb-0 relative">
-                <label for="uploadImageFirst" class="relative block w-64 h-64 rounded-md shadow-md bg-gray-200 cursor-pointer">
-                    <img id="songImage" src="https://i.pinimg.com/564x/19/90/ec/1990ecbc9830a40b178704d5e58f9c08.jpg" alt="Song Image" class="w-full h-full object-cover rounded-md">
-                    <input type="file" id="uploadImageFirst" class="custom-file-input" accept="image/*">
-                </label>
+    <section id="products-section">
+        <!-- Product 1 -->
+        <div class="product" id="product1">
+            <h3>Serum Pencerah Kulit</h3>
+            <img src="product1.jpg" alt="Produk 1">
+            <p>Harga: Rp200.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity1', -1)">-</button>
+                <input type="number" id="quantity1" min="1" value="1">
+                <button onclick="updateQuantity('quantity1', 1)">+</button>
             </div>
-            <div class="md:ml-6 flex-grow">
-                <h2 id="songTitle" class="text-2xl font-semibold mb-2 fade-in editable">Birds Of A Feather</h2>
-                <input type="text" id="songTitleInput" class="editable-input border p-2 rounded w-full mb-4" style="display:none;">
-
-                <p id="songLyrics" class="mb-4 fade-in editable">Billie Eilish</p>
-                <input type="text" id="songLyricsInput" class="editable-input border p-2 rounded w-full mb-4" style="display:none;">
-
-                <audio id="songAudio" controls class="w-full fade-in">
-                    <source id="audioSource" src="file:///C:/Users/pc/Downloads/Billie%20Eilish%20%E2%80%93%20BIRDS%20OF%20A%20FEATHER_(Naijaflavour.com).mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <label for="uploadAudio" id="replaceAudioButton" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">Replace Audio</label>
-                <input type="file" id="uploadAudio" class="custom-file-input" accept="audio/*">
-            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Serum Pencerah Kulit', 200000, 'quantity1')">Tambah ke Keranjang</a>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bounce-in">
-                <label for="uploadImage1" class="relative block w-full h-64 rounded-md shadow-md bg-gray-200 cursor-pointer">
-                    <img id="image1" src="https://i.pinimg.com/736x/f8/1e/de/f81ede80a51a824bc250d5c48fc31ae1.jpg" alt="Additional Image 1" class="w-full h-64 object-cover rounded-md">
-                    <input type="file" id="uploadImage1" class="custom-file-input" accept="image/*">
-                </label>
+
+        <!-- Product 2 -->
+        <div class="product" id="product2">
+            <h3>Moisturizer Hydrating</h3>
+            <img src="product2.jpg" alt="Produk 2">
+            <p>Harga: Rp250.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity2', -1)">-</button>
+                <input type="number" id="quantity2" min="1" value="1">
+                <button onclick="updateQuantity('quantity2', 1)">+</button>
             </div>
-            <div class="bounce-in">
-                <label for="uploadImage2" class="relative block w-full h-64 rounded-md shadow-md bg-gray-200 cursor-pointer">
-                    <img id="image2" src="https://i.pinimg.com/736x/3a/da/ff/3adaff1d55630b04ad301ae66eb39e18.jpg" alt="Additional Image 2" class="w-full h-64 object-cover rounded-md">
-                    <input type="file" id="uploadImage2" class="custom-file-input" accept="image/*">
-                </label>
-            </div>
-            <div class="bounce-in">
-                <label for="uploadImage3" class="relative block w-full h-64 rounded-md shadow-md bg-gray-200 cursor-pointer">
-                    <img id="image3" src="https://i.pinimg.com/564x/f6/da/9d/f6da9d93da5b87bb3cdfe8ced736474f.jpg" alt="Additional Image 3" class="w-full h-64 object-cover rounded-md">
-                    <input type="file" id="uploadImage3" class="custom-file-input" accept="image/*">
-                </label>
-            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Moisturizer Hydrating', 250000, 'quantity2')">Tambah ke Keranjang</a>
         </div>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-    <script src="script.js"></script>
+
+        <!-- Product 3 -->
+        <div class="product" id="product3">
+            <h3>Sunscreen SPF 50</h3>
+            <img src="product3.jpg" alt="Produk 3">
+            <p>Harga: Rp150.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity3', -1)">-</button>
+                <input type="number" id="quantity3" min="1" value="1">
+                <button onclick="updateQuantity('quantity3', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Sunscreen SPF 50', 150000, 'quantity3')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product" id="product4">
+            <h3>Facial Wash Refreshing</h3>
+            <img src="product4.jpg" alt="Produk 4">
+            <p>Harga: Rp100.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity4', -1)">-</button>
+                <input type="number" id="quantity4" min="1" value="1">
+                <button onclick="updateQuantity('quantity4', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Facial Wash Refreshing', 100000, 'quantity4')">Tambah ke Keranjang</a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product" id="product5">
+            <h3>Toner Anti Acne</h3>
+            <img src="product5.jpg" alt="Produk 5">
+            <p>Harga: Rp120.000</p>
+            <div class="quantity-controls">
+                <button onclick="updateQuantity('quantity5', -1)">-</button>
+                <input type="number" id="quantity5" min="1" value="1">
+                <button onclick="updateQuantity('quantity5', 1)">+</button>
+            </div>
+            <a href="#" class="order-btn" onclick="addToCart('Toner Anti Acne', 120000, 'quantity5')">Tambah ke Keranjang</a>
+        </div>
+    </section>
+
+    <section class="cart-summary" id="cart-summary-section">
+        <h3>Keranjang Belanja</h3>
+        <div id="cart-items"></div>
+        <a href="#" class="order-btn" onclick="finalizeOrder()">Konfirmasi Pemesanan</a>
+    </section>
+
+    <section class="order-summary" id="order-summary-section">
+        <div class="product" id="order-form">
+            <h3>Konfirmasi Pesanan</h3>
+            <label for="name">Nama Anda:</label>
+            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">
+            <br>
+            <label for="delivery-method">Metode Pengambilan:</label>
+            <select id="delivery-method" onchange="toggleAddressField()">
+                <option value="diambil ke toko">Ambil di Toko</option>
+                <option value="diantar">Diantar</option>
+            </select>
+            <br>
+            <div id="address-field" style="display: none;">
+                <label for="address">Alamat Pengiriman:</label>
+                <textarea id="address" name="address" rows="3" placeholder="Masukkan alamat lengkap Anda"></textarea>
+            </div>
+            <br>
+            <a href="#" class="order-btn" onclick="confirmOrder()">Konfirmasi Pesanan</a>
+        </div>
+    </section>
+
+    <script>
+        let cart = [];
+
+        function updateQuantity(id, change) {
+            const quantityInput = document.getElementById(id);
+            let currentQuantity = parseInt(quantityInput.value);
+
+            currentQuantity += change;
+            if (currentQuantity < 1) currentQuantity = 1;
+
+            quantityInput.value = currentQuantity;
+        }
+
+        function addToCart(productName, price, quantityId) {
+            const quantityInput = document.getElementById(quantityId);
+            const quantity = parseInt(quantityInput.value);
+
+            if (quantity < 1) {
+                alert('Jumlah harus lebih dari 0.');
+                return;
+            }
+
+            const itemIndex = cart.findIndex(item => item.productName === productName);
+            if (itemIndex > -1) {
+                cart[itemIndex].quantity = quantity;
+            } else {
+                cart.push({ productName, price, quantity });
+            }
+
+            updateCartSummary();
+        }
+
+        function updateCartSummary() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        ${item.quantity} ${item.productName} - Rp${item.price * item.quantity}
+                        <button onclick="removeFromCart(${index})">Hapus</button>
+                    </div>
+                `;
+            });
+            document.querySelector('.cart-summary').style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartSummary();
+        }
+
+        function finalizeOrder() {
+            document.querySelector('.cart-summary').style.display = 'none';
+            document.querySelector('.order-summary').style.display = 'block';
+        }
+
+        function toggleAddressField() {
+            const deliveryMethod = document.getElementById('delivery-method').value;
+            document.getElementById('address-field').style.display = deliveryMethod === 'diantar' ? 'block' : 'none';
+        }
+
+        function confirmOrder() {
+            const name = document.getElementById('name').value;
+            const deliveryMethod = document.getElementById('delivery-method').value;
+            const address = document.getElementById('address').value;
+
+            if (!name) {
+                alert('Harap isi nama Anda.');
+                return;
+            }
+
+            if (deliveryMethod === 'diantar' && !address) {
+                alert('Harap isi alamat Anda.');
+                return;
+            }
+
+            let confirmationMessage = `Nama: ${name}\nPesanan:\n`;
+            cart.forEach(item => {
+                confirmationMessage += `* ${item.quantity} ${item.productName} - Rp${item.price * item.quantity}\n`;
+            });
+            confirmationMessage += `${deliveryMethod}`;
+            if (deliveryMethod === 'diantar') {
+                confirmationMessage += `, Alamat: ${address}`;
+            }
+
+            const whatsappUrl = `https://wa.me/+6285333147228?text=${encodeURIComponent(confirmationMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            // Clear cart and reset order summary
+            cart = [];
+            updateCartSummary();
+            document.querySelector('.order-summary').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
