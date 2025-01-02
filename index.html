@@ -1,576 +1,192 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Skincare Cantik</title>
+    <title>Romantic Theme Website</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #fafafa;
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-        }
-        header {
-            background-color: #ff6f61;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            font-family: 'Lobster', cursive;
-        }
-        header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-        section {
+            background: linear-gradient(to bottom, #FFF0F5, #FFD1DC);
+            color: #4B0082;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            padding: 20px;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
-        .product {
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            padding: 20px;
+
+        .container {
             text-align: center;
-            width: 260px;
+            background: #FFF0F5;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #800080;
+            text-shadow: 1px 1px 3px #FF69B4;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .button {
+            background: linear-gradient(to right, #FF69B4, #800080);
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            background: linear-gradient(to right, #800080, #FF69B4);
+            transform: scale(1.1);
+        }
+
+        .form-container {
+            display: none;
+            text-align: center;
+            background: #FFF0F5;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #800080;
+            border-radius: 10px;
+            width: 80%;
+        }
+
+        .next-page {
+            display: none;
+            text-align: center;
+            background: linear-gradient(to right, #FFD1DC, #FFC0CB);
+            padding: 40px;
+            color: #4B0082;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .next-page h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #800080;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #FF69B4;
+        }
+
+        .next-page img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
             transition: transform 0.3s;
         }
-        .product:hover {
-            transform: translateY(-10px);
-        }
-        .product img {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-        .product h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-        }
-        .order-btn {
-            display: block;
-            padding: 12px 20px;
-            background-color: #ff6f61;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        .order-btn:hover {
-            background-color: #ff4a3d;
-        }
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 15px;
-        }
-        .quantity-controls button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-        .quantity-controls button:hover {
-            background-color: #ff4a3d;
-        }
-        .quantity-controls input {
-            width: 50px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 0 10px;
-            font-size: 1em;
-        }
-        .cart-summary {
-            margin: 40px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-        .cart-item button {
-            background-color: #ff6f61;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .cart-item button:hover {
-            background-color: #ff4a3d;
-        }
-        .confirmation, .cart-summary, .order-summary {
-            display: none;
+
+        .next-page img:hover {
+            transform: scale(1.05);
         }
 
-        /* New CSS for Order Summary */
-        .order-summary {
-            display: none; /* Awalnya tersembunyi */
-            max-width: 400px;
-            margin: 0 auto; /* Agar berada di tengah */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .order-summary h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-
-        .order-summary label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .order-summary input,
-        .order-summary select,
-        .order-summary textarea {
+        .next-page audio {
+            margin-top: 20px;
             width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
         }
 
-        .order-summary textarea {
-            resize: none; /* Menghindari perubahan ukuran */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .order-summary .order-btn {
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
+        .quote {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 1.3em;
+            color: #800080;
+            animation: fadeIn 2s ease-in-out;
         }
 
-        .order-summary .order-btn:hover {
-            background-color: #218838;
+        .background-music {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
         }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Toko Skincare Cantik</h1>
-        <p>Perawatan kulitmu dengan produk terbaik</p>
-    </header>
-
-    <section id="products-section">
-        <!-- Product 1 -->
-        <div class="product" id="product1">
-            <h3>Serum Pencerah Kulit</h3>
-            <img src="product1.jpg" alt="Produk 1">
-            <p>Harga: Rp200.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity1', -1)">-</button>
-                <input type="number" id="quantity1" min="1" value="1">
-                <button onclick="updateQuantity('quantity1', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Serum Pencerah Kulit', 200000, 'quantity1')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product" id="product2">
-            <h3>Moisturizer Hydrating</h3>
-            <img src="product2.jpg" alt="Produk 2">
-            <p>Harga: Rp250.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity2', -1)">-</button>
-                <input type="number" id="quantity2" min="1" value="1">
-                <button onclick="updateQuantity('quantity2', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Moisturizer Hydrating', 250000, 'quantity2')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product" id="product3">
-            <h3>Sunscreen SPF 50</h3>
-            <img src="product3.jpg" alt="Produk 3">
-            <p>Harga: Rp150.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity3', -1)">-</button>
-                <input type="number" id="quantity3" min="1" value="1">
-                <button onclick="updateQuantity('quantity3', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Sunscreen SPF 50', 150000, 'quantity3')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product" id="product4">
-            <h3>Facial Wash Refreshing</h3>
-            <img src="product4.jpg" alt="Produk 4">
-            <p>Harga: Rp100.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity4', -1)">-</button>
-                <input type="number" id="quantity4" min="1" value="1">
-                <button onclick="updateQuantity('quantity4', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Facial Wash Refreshing', 100000, 'quantity4')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product" id="product5">
-            <h3>Toner Anti Acne</h3>
-            <img src="product5.jpg" alt="Produk 5">
-            <p>Harga: Rp120.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity5', -1)">-</button>
-                <input type="number" id="quantity5" min="1" value="1">
-                <button onclick="updateQuantity('quantity5', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Toner Anti Acne', 120000, 'quantity5')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product" id="product6">
-            <h3>Peeling Gel Eksfoliasi</h3>
-            <img src="product6.jpg" alt="Produk 6">
-            <p>Harga: Rp180.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity6', -1)">-</button>
-                <input type="number" id="quantity6" min="1" value="1">
-                <button onclick="updateQuantity('quantity6', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Peeling Gel Eksfoliasi', 180000, 'quantity6')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="product" id="product7">
-            <h3>Face Mask Clay</h3>
-            <img src="product7.jpg" alt="Produk 7">
-            <p>Harga: Rp140.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity7', -1)">-</button>
-                <input type="number" id="quantity7" min="1" value="1">
-                <button onclick="updateQuantity('quantity7', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Face Mask Clay', 140000, 'quantity7')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="product" id="product8">
-            <h3>Eye Cream Anti-Wrinkle</h3>
-            <img src="product8.jpg" alt="Produk 8">
-            <p>Harga: Rp210.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity8', -1)">-</button>
-                <input type="number" id="quantity8" min="1" value="1">
-                <button onclick="updateQuantity('quantity8', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Eye Cream Anti-Wrinkle', 210000, 'quantity8')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 9 -->
-        <div class="product" id="product9">
-            <h3>Lip Balm Moisturizing</h3>
-            <img src="product9.jpg" alt="Produk 9">
-            <p>Harga: Rp90.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity9', -1)">-</button>
-                <input type="number" id="quantity9" min="1" value="1">
-                <button onclick="updateQuantity('quantity9', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Lip Balm Moisturizing', 90000, 'quantity9')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 10 -->
-        <div class="product" id="product10">
-            <h3>Night Cream Repairing</h3>
-            <img src="product10.jpg" alt="Produk 10">
-            <p>Harga: Rp230.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity10', -1)">-</button>
-                <input type="number" id="quantity10" min="1" value="1">
-                <button onclick="updateQuantity('quantity10', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Night Cream Repairing', 230000, 'quantity10')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 11 -->
-        <div class="product" id="product11">
-            <h3>Body Lotion Whitening</h3>
-            <img src="product11.jpg" alt="Produk 11">
-            <p>Harga: Rp160.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity11', -1)">-</button>
-                <input type="number" id="quantity11" min="1" value="1">
-                <button onclick="updateQuantity('quantity11', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Body Lotion Whitening', 160000, 'quantity11')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 12 -->
-        <div class="product" id="product12">
-            <h3>Hair Serum Revitalizing</h3>
-            <img src="product12.jpg" alt="Produk 12">
-            <p>Harga: Rp190.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity12', -1)">-</button>
-                <input type="number" id="quantity12" min="1" value="1">
-                <button onclick="updateQuantity('quantity12', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Hair Serum Revitalizing', 190000, 'quantity12')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 13 -->
-        <div class="product" id="product13">
-            <h3>Scrub Tubuh Exfoliating</h3>
-            <img src="product13.jpg" alt="Produk 13">
-            <p>Harga: Rp130.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity13', -1)">-</button>
-                <input type="number" id="quantity13" min="1" value="1">
-                <button onclick="updateQuantity('quantity13', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Scrub Tubuh Exfoliating', 130000, 'quantity13')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 14 -->
-        <div class="product" id="product14">
-            <h3>Essence Anti-Aging</h3>
-            <img src="product14.jpg" alt="Produk 14">
-            <p>Harga: Rp270.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity14', -1)">-</button>
-                <input type="number" id="quantity14" min="1" value="1">
-                <button onclick="updateQuantity('quantity14', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Essence Anti-Aging', 270000, 'quantity14')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 15 -->
-        <div class="product" id="product15">
-            <h3>Cleanser Foam Gentle</h3>
-            <img src="product15.jpg" alt="Produk 15">
-            <p>Harga: Rp110.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity15', -1)">-</button>
-                <input type="number" id="quantity15" min="1" value="1">
-                <button onclick="updateQuantity('quantity15', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Cleanser Foam Gentle', 110000, 'quantity15')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 16 -->
-        <div class="product" id="product16">
-            <h3>Face Mist Refreshing</h3>
-            <img src="product16.jpg" alt="Produk 16">
-            <p>Harga: Rp125.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity16', -1)">-</button>
-                <input type="number" id="quantity16" min="1" value="1">
-                <button onclick="updateQuantity('quantity16', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Face Mist Refreshing', 125000, 'quantity16')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 17 -->
-        <div class="product" id="product17">
-            <h3>Serum Vitamin C</h3>
-            <img src="product17.jpg" alt="Produk 17">
-            <p>Harga: Rp220.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity17', -1)">-</button>
-                <input type="number" id="quantity17" min="1" value="1">
-                <button onclick="updateQuantity('quantity17', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Serum Vitamin C', 220000, 'quantity17')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 18 -->
-        <div class="product" id="product18">
-            <h3>Brightening Essence</h3>
-            <img src="product18.jpg" alt="Produk 18">
-            <p>Harga: Rp240.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity18', -1)">-</button>
-                <input type="number" id="quantity18" min="1" value="1">
-                <button onclick="updateQuantity('quantity18', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Brightening Essence', 240000, 'quantity18')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 19 -->
-        <div class="product" id="product19">
-            <h3>Facial Oil Nourishing</h3>
-            <img src="product19.jpg" alt="Produk 19">
-            <p>Harga: Rp150.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity19', -1)">-</button>
-                <input type="number" id="quantity19" min="1" value="1">
-                <button onclick="updateQuantity('quantity19', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Facial Oil Nourishing', 150000, 'quantity19')">Tambah ke Keranjang</a>
-        </div>
-
-        <!-- Product 20 -->
-        <div class="product" id="product20">
-            <h3>Body Butter Moisturizing</h3>
-            <img src="product20.jpg" alt="Produk 20">
-            <p>Harga: Rp200.000</p>
-            <div class="quantity-controls">
-                <button onclick="updateQuantity('quantity20', -1)">-</button>
-                <input type="number" id="quantity20" min="1" value="1">
-                <button onclick="updateQuantity('quantity20', 1)">+</button>
-            </div>
-            <a href="#" class="order-btn" onclick="addToCart('Body Butter Moisturizing', 200000, 'quantity20')">Tambah ke Keranjang</a>
-        </div>
-
-    <section class="cart-summary" id="cart-summary-section">
-        <h3>Keranjang Belanja</h3>
-        <div id="cart-items"></div>
-        <a href="#" class="order-btn" onclick="finalizeOrder()">Konfirmasi Pemesanan</a>
-    </section>
-
-    <section class="order-summary" id="order-summary-section">
-        <div class="product" id="order-form">
-            <h3>Konfirmasi Pesanan</h3>
-            <label for="name">Nama Anda:</label>
-            <input type="text" id="name" name="name" placeholder="Masukkan nama Anda">
-            <label for="delivery-method">Metode Pengambilan:</label>
-            <select id="delivery-method" onchange="toggleAddressField()">
-                <option value="diambil ke toko">Ambil di Toko</option>
-                <option value="diantar">Diantar</option>
-            </select>
-            <div id="address-field" style="display: none;">
-                <label for="address">Alamat Pengiriman:</label>
-                <textarea id="address" name="address" rows="3" placeholder="Masukkan alamat lengkap Anda"></textarea>
-            </div>
-            <a href="#" class="order-btn" onclick="confirmOrder()">Konfirmasi Pesanan</a>
-        </div>
-    </section>
-
     <script>
-        let cart = [];
-
-        function updateQuantity(id, change) {
-            const quantityInput = document.getElementById(id);
-            let currentQuantity = parseInt(quantityInput.value);
-
-            currentQuantity += change;
-            if (currentQuantity < 1) currentQuantity = 1;
-
-            quantityInput.value = currentQuantity;
+        function showForm() {
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.form-container').style.display = 'block';
         }
 
-        function addToCart(productName, price, quantityId) {
-            const quantityInput = document.getElementById(quantityId);
-            const quantity = parseInt(quantityInput.value);
+        function submitForm() {
+            const fullName = document.getElementById('fullName').value;
+            const nickname = document.getElementById('nickname').value;
+            const dob = document.getElementById('dob').value.trim().toLowerCase();
 
-            if (quantity < 1) {
-                alert('Jumlah harus lebih dari 0.');
-                return;
-            }
-
-            const itemIndex = cart.findIndex(item => item.productName === productName);
-            if (itemIndex > -1) {
-                cart[itemIndex].quantity = quantity;
+            if (fullName === "Wulan Febrianti" && nickname === "Lala" && dob === "25 februari") {
+                document.querySelector('.form-container').style.display = 'none';
+                document.querySelector('.next-page').style.display = 'block';
             } else {
-                cart.push({ productName, price, quantity });
+                alert('SALAH!!!');
             }
-
-            updateCartSummary();
-        }
-
-        function updateCartSummary() {
-            const cartItems = document.getElementById('cart-items');
-            cartItems.innerHTML = '';
-            cart.forEach((item, index) => {
-                cartItems.innerHTML += `
-                    <div class="cart-item">
-                        ${item.quantity} ${item.productName} - Rp${item.price * item.quantity}
-                        <button onclick="removeFromCart(${index})">Hapus</button>
-                    </div>
-                `;
-            });
-            document.querySelector('.cart-summary').style.display = cart.length > 0 ? 'block' : 'none';
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartSummary();
-        }
-
-        function finalizeOrder() {
-            document.querySelector('.cart-summary').style.display = 'none';
-            document.querySelector('.order-summary').style.display = 'block';
-        }
-
-        function toggleAddressField() {
-            const deliveryMethod = document.getElementById('delivery-method').value;
-            document.getElementById('address-field').style.display = deliveryMethod === 'diantar' ? 'block' : 'none';
-        }
-
-        function confirmOrder() {
-            const name = document.getElementById('name').value;
-            const deliveryMethod = document.getElementById('delivery-method').value;
-            const address = document.getElementById('address').value;
-
-            if (!name) {
-                alert('Harap isi nama Anda.');
-                return;
-            }
-
-            if (deliveryMethod === 'diantar' && !address) {
-                alert('Harap isi alamat Anda.');
-                return;
-            }
-
-            let confirmationMessage = `Nama: ${name}\nPesanan:\n`;
-            cart.forEach(item => {
-                confirmationMessage += `* ${item.quantity} ${item.productName} - Rp${item.price * item.quantity}\n`;
-            });
-            confirmationMessage += `${deliveryMethod}`;
-            if (deliveryMethod === 'diantar') {
-                confirmationMessage += `, Alamat: ${address}`;
-            }
-
-            const whatsappUrl = `https://wa.me/+6285333147228?text=${encodeURIComponent(confirmationMessage)}`;
-            window.open(whatsappUrl, '_blank');
-            // Clear cart and reset order summary
-            cart = [];
-            updateCartSummary();
-            document.querySelector('.order-summary').style.display = 'none';
         }
     </script>
+</head>
+<body>
+    <audio class="background-music" autoplay loop>
+        <source src="https://youtu.be/cHSRG1mGaAo?si=ItlJnqmVETSyeDJp" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1>Hai, Lala yaa?</h1>
+        <button class="button" onclick="showForm()">Next</button>
+    </div>
+
+    <div class="form-container">
+        <h1>Confirm Your Identity</h1>
+        <form>
+            <input type="text" id="fullName" placeholder="Enter your full name">
+            <br>
+            <input type="text" id="nickname" placeholder="Enter your nickname">
+            <br>
+            <input type="text" id="dob" placeholder="Enter your birth date (e.g., 25 Februari)">
+            <br>
+            <button type="button" class="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <div class="next-page">
+        <h1>Welcome to Your Special Page, Lala!</h1>
+        <img src="https://via.placeholder.com/800x400.png?text=Romantic+Scene" alt="Romantic Scene">
+        <p>
+            "Every moment with you is a dream come true. Here's to celebrating you, Lala."
+        </p>
+        <div class="quote">"Love is not finding someone to live with, it's finding someone you can't live without."</div>
+        <audio autoplay loop>
+            <source src="https://youtu.be/cHSRG1mGaAo?si=ItlJnqmVETSyeDJp" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 </body>
 </html>
