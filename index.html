@@ -163,7 +163,7 @@
             const nickname = document.getElementById('nickname').value;
             const dob = document.getElementById('dob').value.trim().toLowerCase();
 
-            if (fullName === "Wulan Febrianti" && nickname === "Lala" && dob === "25 februari") {
+            if (fullName === "Wulan Febrianti" && nickname === "Bocil" && dob === "25 februari") {
                 document.querySelector('.form-container').style.display = 'none';
                 const nextPage = document.querySelector('.next-page');
                 nextPage.style.display = 'block';
@@ -195,13 +195,13 @@
     </div>
 
     <div class="form-container">
-        <h1>Confirm Your Identity</h1>
+        <h1>Ini beneran Lala??</h1>
         <form>
-            <input type="text" id="fullName" placeholder="Enter your full name">
+            <input type="text" id="fullName" placeholder="Nama lengkapnya siapa?">
             <br>
-            <input type="text" id="nickname" placeholder="Enter your nickname">
+            <input type="text" id="nickname" placeholder="Nama panggilan yang biasa saya kasih apa?">
             <br>
-            <input type="text" id="dob" placeholder="Enter your birth date (example, 15 Juni)">
+            <input type="text" id="dob" placeholder="Tanggal lahirnya berapa? (contoh, 15 Juni)">
             <br>
             <button type="button" class="button" onclick="submitForm()">Submit</button>
         </form>
