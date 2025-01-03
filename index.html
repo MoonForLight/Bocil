@@ -168,9 +168,15 @@
                 const nextPage = document.querySelector('.next-page');
                 nextPage.style.display = 'block';
                 nextPage.classList.add('fade-in');
+                playMusic();
             } else {
                 alert('SALAH!!!');
             }
+        }
+
+        function playMusic() {
+            const audio = document.querySelector('#background-music');
+            audio.play();
         }
 
         window.onload = function() {
@@ -207,41 +213,41 @@
 
         <div class="gallery">
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_052941.jpg" alt="Image 1">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_052941.jpg" alt="Image 1">
                 <p>Ini pertama kali saya ngechat kamu, dulu niatnya cuma ngajakin Valo, eh gatau kenapa tiba-tiba jadi nyaman ampe keterusan.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_053315.jpg" alt="Image 2">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_053315.jpg" alt="Image 2">
                 <p>Dulu manggilnya kamu, terus berubah ke kak, sekarang kating, makin asing aja, eh dah asing yaa, lupa.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_053757.jpg" alt="Image 3">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_053757.jpg" alt="Image 3">
                 <p>Disini kayaknya awal deket, soalnya dari sini pertama telfonan.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_055440.jpg" alt="Image 4">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_055440.jpg" alt="Image 4">
                 <p>One of the best part that i like, telfonan sambil main Valo.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_064159.jpg" alt="Image 5">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_064159.jpg" alt="Image 5">
                 <p>Ini pas kita pertama kali keluar makan bareng berdua.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_064259.jpg" alt="Image 6">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_064259.jpg" alt="Image 6">
                 <p>Ini ga bisa dijelasin, THE BEST PART.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_064527.jpg" alt="Image 7">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_064527.jpg" alt="Image 7">
                 <p>Gatau ini ngomongin apa ampe selama ini, tapi kalo sy tau itu bakal ga keulang, harusnya saya lamain lagi durasinya.</p>
             </div>
             <div class="gallery-item">
-                <img src="https://github.com/MoonForLight/Bocil/blob/main/Screenshot_20250103_064842.jpg" alt="Image 8">
+                <img src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/Screenshot_20250103_064842.jpg" alt="Image 8">
                 <p>And yeaaa at the end we stop talking.</p>
             </div>
         </div>
 
-        <audio autoplay loop>
-            <source src="https://vscode.dev/github/MoonForLight/Bocil/blob/main/videoplayback.m4a" type="audio/mpeg">
+        <audio id="background-music" loop>
+            <source src="https://raw.githubusercontent.com/MoonForLight/Bocil/main/videoplayback.m4a" type="audio/mpeg">
         </audio>
         <button class="button" onclick="location.reload()">Go Back</button>
     </div>
